@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="84dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/food_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="16dp"
+        android:src="@mipmap/photo" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/icon"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="16dp"
+        android:text="2018-09-18"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/heat_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="34dp"
+        android:text="总热量："
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/food_heat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_toRightOf="@+id/heat_title"
+        android:text="1024"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/food_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="84dp"
+        android:layout_marginTop="52dp"
+        android:text="米饭*2，饮料*1"
+        android:textColor="@color/black" />
+
+
+</RelativeLayout>

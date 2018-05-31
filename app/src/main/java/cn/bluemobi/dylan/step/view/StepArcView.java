@@ -259,5 +259,9 @@ public class StepArcView extends View {
         }
     }
 
+    public String getStepNum() {
+        return stepNumber;
+    }
+
 }
 

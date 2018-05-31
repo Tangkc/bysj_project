@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".activity.FootManagerActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/layout_titlebar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -18,7 +20,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:onClick="onBackward"
             android:paddingLeft="18dp"
             android:paddingRight="18dp"
             android:src="@mipmap/arrow_back_white"
@@ -29,11 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:layout_centerInParent="true"
             android:background="#00000000"
             android:gravity="center_horizontal"
             android:paddingLeft="10px"
             android:paddingRight="10px"
-            android:text="历史记录"
+            android:text="膳食记录"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
@@ -54,24 +56,26 @@
             android:singleLine="true"
             android:visibility="invisible" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/food_tongji"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentRight="true"
+            android:text="查看统计"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:src="@mipmap/arrow_back_white"
+            android:visibility="visible" />
 
-    <LinearLayout
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/food_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layout_titlebar"
-        android:orientation="vertical">
+        android:layout_below="@+id/layout_titlebar" />
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/bar_chart1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/bar_chart2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
 </RelativeLayout>

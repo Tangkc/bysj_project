@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".activity.FoodStatisticsActivity">
 
     <LinearLayout
-        android:id="@+id/layout_titlebar"
+        android:id="@+id/food_statis_title"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/colorPrimary"
@@ -18,7 +20,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:onClick="onBackward"
             android:paddingLeft="18dp"
             android:paddingRight="18dp"
             android:src="@mipmap/arrow_back_white"
@@ -59,7 +60,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layout_titlebar"
+        android:layout_below="@+id/food_statis_title"
         android:orientation="vertical">
 
         <com.github.mikephil.charting.charts.BarChart
@@ -67,11 +68,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/bar_chart2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
     </LinearLayout>
+
 </RelativeLayout>
