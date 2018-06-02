@@ -77,15 +77,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="64dp"
                 android:hint="请输入验证码"
-                android:inputType="textPostalAddress" />
+                android:inputType="number"
+                android:maxEms="4" />
 
             <Button
                 android:id="@+id/get_number"
                 android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:layout_toRightOf="@+id/input_address"
-                android:text="获取验证码"
-                android:layout_height="50dp" />
+                android:text="获取验证码" />
 
         </RelativeLayout>
         <!-- Signup Button -->

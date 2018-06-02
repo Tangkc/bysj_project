@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,6 +29,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import org.json.JSONObject;
 
@@ -53,6 +56,8 @@ import static cn.bluemobi.dylan.step.util.NetRequestUtil.UPLOAD_STEP_URL;
  * 记步主页
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private static final int DEFAULT_IMAGELOAD_TIME = 60 * 1000;
 
 
     private TextView tv_data;
@@ -247,22 +252,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (userInfo == null) {
                             userInfo = new UserInfo();
                         }
-                        if (name != null) {
+                        if (name != null && !TextUtils.isEmpty(name.getText().toString())) {
                             userInfo.setUserNick(name.getText().toString());
                         }
-                        if (sex != null) {
+                        if (sex != null && !TextUtils.isEmpty(sex.getText().toString())) {
                             userInfo.setUserSex(sex.getText().toString());
                         }
-                        if (age != null) {
+                        if (age != null && !TextUtils.isEmpty(age.getText().toString())) {
                             userInfo.setUserAge(Integer.parseInt(age.getText().toString()));
                         }
-                        if (conlocal != null) {
+                        if (conlocal != null && !TextUtils.isEmpty(conlocal.getText().toString())) {
                             userInfo.setConstellation(conlocal.getText().toString());
                         }
-                        if (job != null) {
+                        if (job != null && !TextUtils.isEmpty(job.getText().toString())) {
                             userInfo.setJob(job.getText().toString());
                         }
-                        if (local != null) {
+                        if (local != null && !TextUtils.isEmpty(local.getText().toString())) {
                             userInfo.setUserAddress(local.getText().toString());
                         }
                         dialog.dismiss();
@@ -308,6 +313,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).imageDownloader(
+                new BaseImageDownloader(this, DEFAULT_IMAGELOAD_TIME, DEFAULT_IMAGELOAD_TIME)) // connectTimeout超时时间
+                .build();
+        ImageLoader.getInstance().init(config);
         getData();
         assignViews();
         initData();

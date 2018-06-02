@@ -100,10 +100,10 @@ public class SignupActivity extends AppCompatActivity {
      * 注册
      */
     public void signup() {
-        if (!validate()) {
-            onSignupFailed();
-            return;
-        }
+//        if (!validate()) {
+//            onSignupFailed();
+//            return;
+//        }
         final ProgressDialog progressDialog = new ProgressDialog(SignupActivity.this,
                 R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
@@ -125,6 +125,7 @@ public class SignupActivity extends AppCompatActivity {
                     JSONObject json = new JSONObject(result);
                     if (json.get("code").equals("10003")) {
                         Toast.makeText(SignupActivity.this, "该用户已存在", Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
                         return;
                     }
                     JSONObject returedata = (JSONObject) json.get("returdata");
@@ -217,11 +218,21 @@ public class SignupActivity extends AppCompatActivity {
             public void afterEvent(int event, int result, Object data) {
                 if (result == SMSSDK.RESULT_COMPLETE) {
                     // TODO 处理成功得到验证码的结果
-                    signup();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            signup();
+                        }
+                    });
                     // 请注意，此时只是完成了发送验证码的请求，验证码短信还需要几秒钟之后才送达
                 } else {
                     // TODO 处理错误的结果
-                    Toast.makeText(SignupActivity.this, "请重新尝试", Toast.LENGTH_LONG).show();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(SignupActivity.this, "请重新尝试", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
 
             }

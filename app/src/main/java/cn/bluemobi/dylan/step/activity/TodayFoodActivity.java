@@ -202,8 +202,13 @@ public class TodayFoodActivity extends AppCompatActivity {
                     uoloadTodayFood(iconId);
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(TodayFoodActivity.this, "上传图片失败", Toast.LENGTH_SHORT).show();
-                    progressBar.setVisibility(View.GONE);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(TodayFoodActivity.this, "上传图片失败", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
                 }
             }
         });

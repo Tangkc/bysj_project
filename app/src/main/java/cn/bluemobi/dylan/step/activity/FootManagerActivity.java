@@ -33,6 +33,7 @@ public class FootManagerActivity extends AppCompatActivity {
     /**
      * ImageLoad默认参数
      */
+    private static final int DEFAULT_IMAGELOAD_TIME = 60 * 1000;
 
     ListView listView;
     FoodAdapter foodAdapter;
@@ -44,6 +45,10 @@ public class FootManagerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_foot_manager);
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).imageDownloader(
+                new BaseImageDownloader(this, DEFAULT_IMAGELOAD_TIME, DEFAULT_IMAGELOAD_TIME)) // connectTimeout超时时间
+                .build();
+        ImageLoader.getInstance().init(config);
         listView = (ListView) findViewById(R.id.food_list);
         textView = (TextView) findViewById(R.id.food_tongji);
         textView.setOnClickListener(new View.OnClickListener() {

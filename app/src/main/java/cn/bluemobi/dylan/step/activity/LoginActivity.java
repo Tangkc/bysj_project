@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String USERINFO_USERID = "USERINFO_USERID";
 
-    private static final int DEFAULT_IMAGELOAD_TIME = 60 * 1000;
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -54,10 +53,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).imageDownloader(
-                new BaseImageDownloader(this, DEFAULT_IMAGELOAD_TIME, DEFAULT_IMAGELOAD_TIME)) // connectTimeout超时时间
-                .build();
-        ImageLoader.getInstance().init(config);
         // TODO: 2018/5/27  
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
